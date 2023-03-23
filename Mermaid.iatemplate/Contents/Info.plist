@@ -18,6 +18,10 @@
 	<string>document</string>
 	<key>IATemplateDescription</key>
 	<string>Mermaid Template.</string>
+	<key>IATemplateFooterHeight</key>
+	<integer>90</integer>
+	<key>IATemplateHeaderHeight</key>
+	<integer>90</integer>
 	<key>IATemplateAuthor</key>
 	<string>Dave Ropte</string>
 	<key>IATemplateAuthorURL</key>
