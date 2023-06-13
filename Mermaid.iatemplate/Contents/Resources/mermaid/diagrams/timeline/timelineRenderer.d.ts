@@ -1,5 +1,5 @@
-import { Diagram } from '../../Diagram';
-import { MermaidConfig } from '../../config.type';
+import { Diagram } from '../../Diagram.js';
+import { MermaidConfig } from '../../config.type.js';
 interface TimelineTask {
     id: number;
     section: string;

@@ -1,16 +1,16 @@
-import { MermaidConfig } from '../../config.type';
+import { MermaidConfig } from '../../config.type.js';
 export declare const diagram: {
     parser: any;
     db: {
         parseDirective: (statement: any, context: any, type: any) => void;
-        defaultConfig: () => import("../../config.type").FlowchartDiagramConfig | undefined;
+        defaultConfig: () => import("../../config.type.js").FlowchartDiagramConfig | undefined;
         setAccTitle: (txt: string) => void;
         getAccTitle: () => string;
         getAccDescription: () => string;
         setAccDescription: (txt: string) => void;
-        addVertex: (_id: any, text: any, type: any, style: any, classes: any, dir: any, props?: {}) => void;
+        addVertex: (_id: any, textObj: any, type: any, style: any, classes: any, dir: any, props?: {}) => void;
         lookUpDomId: (id: any) => any;
-        addLink: (_start: any, _end: any, type: any, linktext: any) => void;
+        addLink: (_start: any, _end: any, type: any) => void;
         updateLinkInterpolate: (positions: any, interp: any) => void;
         updateLink: (positions: any, style: any) => void;
         addClass: (id: any, style: any) => void;
@@ -51,8 +51,8 @@ export declare const diagram: {
         addVertices: (vert: any, g: any, svgId: any, root: any, doc: any, diagObj: any) => void;
         addEdges: (edges: object, g: object, diagObj: any) => void;
         getClasses: (text: any, diagObj: any) => object;
-        draw: (text: any, id: any, _version: any, diagObj: any) => void;
+        draw: (text: any, id: any, _version: any, diagObj: any) => Promise<void>;
     };
-    styles: (options: import("./styles").FlowChartStyleOptions) => string;
+    styles: (options: import("./styles.js").FlowChartStyleOptions) => string;
     init: (cnf: MermaidConfig) => void;
 };

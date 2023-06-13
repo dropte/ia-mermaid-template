@@ -1,4 +1,4 @@
-import type { FlowChartStyleOptions } from './diagrams/flowchart/styles';
+import type { FlowChartStyleOptions } from './diagrams/flowchart/styles.js';
 declare const getStyles: (type: string, userStyles: string, options: {
     fontFamily: string;
     fontSize: string;

@@ -1,11 +1,11 @@
-import { DiagramDefinition, DiagramDetector } from './types';
-import * as _commonDb from '../commonDb';
-export declare const log: Record<import("../logger").LogLevel, {
+import { DiagramDefinition, DiagramDetector } from './types.js';
+import * as _commonDb from '../commonDb.js';
+export declare const log: Record<import("../logger.js").LogLevel, {
     (...data: any[]): void;
     (message?: any, ...optionalParams: any[]): void;
 }>;
 export declare const setLogLevel: (level?: string | number) => void;
-export declare const getConfig: () => import("../config.type").MermaidConfig;
+export declare const getConfig: () => import("../config.type.js").MermaidConfig;
 export declare const sanitizeText: (text: string) => string;
 export declare const setupGraphViewbox: (graph: any, svgElem: any, padding: any, useMaxWidth: any) => void;
 export declare const getCommonDb: () => typeof _commonDb;

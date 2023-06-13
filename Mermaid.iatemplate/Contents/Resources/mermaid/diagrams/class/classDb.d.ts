@@ -1,4 +1,4 @@
-import { ClassRelation, ClassNode, ClassNote, ClassMap } from './classTypes';
+import { ClassRelation, ClassNode, ClassNote, ClassMap, NamespaceMap, NamespaceNode } from './classTypes.js';
 export declare const parseDirective: (statement: string, context: string, type: string) => void;
 export declare const setClassLabel: (id: string, label: string) => void;
 /**
@@ -50,7 +50,7 @@ export declare const cleanupLabel: (label: string) => string;
  * @param className - Class to add
  */
 export declare const setCssClass: (ids: string, className: string) => void;
-export declare const getTooltip: (id: string) => string | undefined;
+export declare const getTooltip: (id: string, namespace?: string) => string | undefined;
 /**
  * Called by parser when a link is found. Adds the URL to the vertex data.
  *
@@ -79,13 +79,28 @@ export declare const relationType: {
     DEPENDENCY: number;
     LOLLIPOP: number;
 };
+/**
+ * Function called by parser when a namespace definition has been found.
+ *
+ * @param id - Id of the namespace to add
+ * @public
+ */
+export declare const addNamespace: (id: string) => void;
+/**
+ * Function called by parser when a namespace definition has been found.
+ *
+ * @param id - Id of the namespace to add
+ * @param classNames - Ids of the class to add
+ * @public
+ */
+export declare const addClassesToNamespace: (id: string, classNames: string[]) => void;
 declare const _default: {
     parseDirective: (statement: string, context: string, type: string) => void;
     setAccTitle: (txt: string) => void;
     getAccTitle: () => string;
     getAccDescription: () => string;
     setAccDescription: (txt: string) => void;
-    getConfig: () => import("../../config.type").ClassDiagramConfig | undefined;
+    getConfig: () => import("../../config.type.js").ClassDiagramConfig | undefined;
     addClass: (id: string) => void;
     bindFunctions: (element: Element) => void;
     clear: () => void;
@@ -115,11 +130,15 @@ declare const _default: {
     setClickEvent: (ids: string, functionName: string, functionArgs: string) => void;
     setCssClass: (ids: string, className: string) => void;
     setLink: (ids: string, linkStr: string, target: string) => void;
-    getTooltip: (id: string) => string | undefined;
+    getTooltip: (id: string, namespace?: string | undefined) => string | undefined;
     setTooltip: (ids: string, tooltip?: string | undefined) => void;
     lookUpDomId: (id: string) => string;
     setDiagramTitle: (txt: string) => void;
     getDiagramTitle: () => string;
     setClassLabel: (id: string, label: string) => void;
+    addNamespace: (id: string) => void;
+    addClassesToNamespace: (id: string, classNames: string[]) => void;
+    getNamespace: (name: string) => NamespaceNode;
+    getNamespaces: () => NamespaceMap;
 };
 export default _default;

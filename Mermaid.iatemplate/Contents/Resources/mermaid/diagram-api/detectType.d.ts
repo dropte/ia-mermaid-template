@@ -1,5 +1,5 @@
-import { MermaidConfig } from '../config.type';
-import type { DiagramDetector, DiagramLoader, ExternalDiagramDefinition } from './types';
+import { MermaidConfig } from '../config.type.js';
+import type { DiagramDetector, DiagramLoader, ExternalDiagramDefinition } from './types.js';
 /**
  * Detects the type of the graph text.
  *

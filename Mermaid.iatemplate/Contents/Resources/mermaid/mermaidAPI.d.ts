@@ -1,4 +1,5 @@
-import { MermaidConfig } from './config.type';
+import { Diagram } from './Diagram.js';
+import { MermaidConfig } from './config.type.js';
 interface DiagramStyleClassDef {
     id: string;
     styles?: string[];
@@ -7,7 +8,7 @@ interface DiagramStyleClassDef {
 export interface ParseOptions {
     suppressErrors?: boolean;
 }
-export declare type D3Element = any;
+export type D3Element = any;
 export interface RenderResult {
     /**
      * The svg code for the rendered graph.
@@ -31,7 +32,7 @@ export interface RenderResult {
  * @returns true if the diagram is valid, false otherwise if parseOptions.suppressErrors is true.
  * @throws Error if the diagram is invalid and parseOptions.suppressErrors is false.
  */
-declare function parse(text: string, parseOptions?: ParseOptions): Promise<boolean | void>;
+declare function parse(text: string, parseOptions?: ParseOptions): Promise<boolean>;
 /**
  * @param  text - text to be encoded
  * @returns
@@ -163,6 +164,7 @@ declare function initialize(options?: MermaidConfig): void;
  *       numberSectionStyles: 4,
  *       axisFormat: '%Y-%m-%d',
  *       topAxis: false,
+ *       displayMode: '',
  *     },
  *   };
  *   mermaid.initialize(config);
@@ -172,6 +174,7 @@ export declare const mermaidAPI: Readonly<{
     render: (id: string, text: string, svgContainingElement?: Element) => Promise<RenderResult>;
     parse: typeof parse;
     parseDirective: (p: any, statement: string, context: string, type: string) => void;
+    getDiagramFromText: (text: string) => Promise<Diagram>;
     initialize: typeof initialize;
     getConfig: () => MermaidConfig;
     setConfig: (conf: MermaidConfig) => MermaidConfig;

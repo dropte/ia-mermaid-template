@@ -1,9 +1,10 @@
-import { MermaidConfig } from './config.type';
-import { mermaidAPI, ParseOptions, RenderResult } from './mermaidAPI';
-import type { ParseErrorFunction } from './Diagram';
-import type { DetailedError } from './utils';
-import { ExternalDiagramDefinition } from './diagram-api/types';
-import { UnknownDiagramError } from './errors';
+import { MermaidConfig } from './config.type.js';
+import { mermaidAPI, ParseOptions, RenderResult } from './mermaidAPI.js';
+import { detectType } from './diagram-api/detectType.js';
+import type { ParseErrorFunction } from './Diagram.js';
+import type { DetailedError } from './utils.js';
+import { ExternalDiagramDefinition } from './diagram-api/types.js';
+import { UnknownDiagramError } from './errors.js';
 export type { MermaidConfig, DetailedError, ExternalDiagramDefinition, ParseErrorFunction, RenderResult, ParseOptions, UnknownDiagramError, };
 export interface RunOptions {
     /**
@@ -126,7 +127,7 @@ declare const parse: (text: string, parseOptions?: ParseOptions) => Promise<bool
  * @returns Returns the SVG Definition and BindFunctions.
  */
 declare const render: (id: string, text: string, container?: Element) => Promise<RenderResult>;
-declare const mermaid: {
+export interface Mermaid {
     startOnLoad: boolean;
     parseError?: ParseErrorFunction;
     mermaidAPI: typeof mermaidAPI;
@@ -138,5 +139,7 @@ declare const mermaid: {
     initialize: typeof initialize;
     contentLoaded: typeof contentLoaded;
     setParseErrorHandler: typeof setParseErrorHandler;
-};
+    detectType: typeof detectType;
+}
+declare const mermaid: Mermaid;
 export default mermaid;

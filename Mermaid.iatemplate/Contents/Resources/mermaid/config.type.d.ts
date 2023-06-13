@@ -24,6 +24,7 @@ export interface MermaidConfig {
     state?: StateDiagramConfig;
     er?: ErDiagramConfig;
     pie?: PieDiagramConfig;
+    quadrantChart?: QuadrantChartConfig;
     requirement?: RequirementDiagramConfig;
     mindmap?: MindmapDiagramConfig;
     gitGraph?: GitGraphDiagramConfig;
@@ -211,7 +212,29 @@ export interface MindmapDiagramConfig extends BaseDiagramConfig {
     padding: number;
     maxNodeWidth: number;
 }
-export declare type PieDiagramConfig = BaseDiagramConfig;
+export interface PieDiagramConfig extends BaseDiagramConfig {
+    textPosition?: number;
+}
+export interface QuadrantChartConfig extends BaseDiagramConfig {
+    chartWidth: number;
+    chartHeight: number;
+    titleFontSize: number;
+    titlePadding: number;
+    quadrantPadding: number;
+    xAxisLabelPadding: number;
+    yAxisLabelPadding: number;
+    xAxisLabelFontSize: number;
+    yAxisLabelFontSize: number;
+    quadrantLabelFontSize: number;
+    quadrantTextTopPadding: number;
+    pointTextPadding: number;
+    pointLabelFontSize: number;
+    pointRadius: number;
+    xAxisPosition: 'top' | 'bottom';
+    yAxisPosition: 'left' | 'right';
+    quadrantInternalBorderStrokeWidth: number;
+    quadrantExternalBorderStrokeWidth: number;
+}
 export interface ErDiagramConfig extends BaseDiagramConfig {
     titleTopMargin?: number;
     diagramPadding?: number;
@@ -316,6 +339,7 @@ export interface GanttDiagramConfig extends BaseDiagramConfig {
     axisFormat?: string;
     tickInterval?: string;
     topAxis?: boolean;
+    displayMode?: string;
 }
 export interface SequenceDiagramConfig extends BaseDiagramConfig {
     arrowMarkerAbsolute?: boolean;
@@ -364,11 +388,12 @@ export interface FlowchartDiagramConfig extends BaseDiagramConfig {
     curve?: string;
     padding?: number;
     defaultRenderer?: string;
+    wrappingWidth?: number;
 }
 export interface FontConfig {
     fontSize?: string | number;
     fontFamily?: string;
     fontWeight?: string | number;
 }
-export declare type FontCalculator = () => Partial<FontConfig>;
+export type FontCalculator = () => Partial<FontConfig>;
 export {};

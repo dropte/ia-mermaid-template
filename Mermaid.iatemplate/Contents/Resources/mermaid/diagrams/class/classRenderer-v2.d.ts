@@ -1,5 +1,14 @@
 import * as graphlib from 'dagre-d3-es/src/graphlib/index.js';
-import { ClassRelation, ClassNote, ClassMap } from './classTypes';
+import { ClassRelation, ClassNote, ClassMap, NamespaceMap } from './classTypes.js';
+/**
+ * Function that adds the vertices found during parsing to the graph to be rendered.
+ *
+ * @param namespaces - Object containing the vertices.
+ * @param g - The graph that is to be drawn.
+ * @param _id - id of the graph
+ * @param diagObj - The diagram object
+ */
+export declare const addNamespaces: (namespaces: NamespaceMap, g: graphlib.Graph, _id: string, diagObj: any) => void;
 /**
  * Function that adds the vertices found during parsing to the graph to be rendered.
  *
@@ -7,8 +16,9 @@ import { ClassRelation, ClassNote, ClassMap } from './classTypes';
  * @param g - The graph that is to be drawn.
  * @param _id - id of the graph
  * @param diagObj - The diagram object
+ * @param parent - id of the parent namespace, if it exists
  */
-export declare const addClasses: (classes: ClassMap, g: graphlib.Graph, _id: string, diagObj: any) => void;
+export declare const addClasses: (classes: ClassMap, g: graphlib.Graph, _id: string, diagObj: any, parent?: string) => void;
 /**
  * Function that adds the additional vertices (notes) found during parsing to the graph to be rendered.
  *
@@ -39,9 +49,9 @@ export declare const setConf: (cnf: any) => void;
  * @param _version -
  * @param diagObj -
  */
-export declare const draw: (text: string, id: string, _version: string, diagObj: any) => void;
+export declare const draw: (text: string, id: string, _version: string, diagObj: any) => Promise<void>;
 declare const _default: {
     setConf: (cnf: any) => void;
-    draw: (text: string, id: string, _version: string, diagObj: any) => void;
+    draw: (text: string, id: string, _version: string, diagObj: any) => Promise<void>;
 };
 export default _default;

@@ -6,13 +6,14 @@ export declare const diagram: {
             ZERO_OR_MORE: string;
             ONE_OR_MORE: string;
             ONLY_ONE: string;
+            MD_PARENT: string;
         };
         Identification: {
             NON_IDENTIFYING: string;
             IDENTIFYING: string;
         };
         parseDirective: (statement: any, context: any, type: any) => void;
-        getConfig: () => import("../../config.type").ErDiagramConfig | undefined;
+        getConfig: () => import("../../config.type.js").ErDiagramConfig | undefined;
         addEntity: (name: any) => any;
         addAttributes: (entityName: any, attribs: any) => void;
         getEntities: () => {};

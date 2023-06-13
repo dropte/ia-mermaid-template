@@ -34,7 +34,7 @@ export interface EdgeData {
     labelStyle: string;
     curve: any;
 }
-export declare type ClassRelation = {
+export type ClassRelation = {
     id1: string;
     id2: string;
     relationTitle1: string;
@@ -49,4 +49,11 @@ export declare type ClassRelation = {
         lineType: number;
     };
 };
-export declare type ClassMap = Record<string, ClassNode>;
+export interface NamespaceNode {
+    id: string;
+    domId: string;
+    classes: ClassMap;
+    children: NamespaceMap;
+}
+export type ClassMap = Record<string, ClassNode>;
+export type NamespaceMap = Record<string, NamespaceNode>;
