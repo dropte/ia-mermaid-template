@@ -1,10 +1,7 @@
-import { QuadrantChartConfig } from '../../config.type.js';
+import type { BaseDiagramConfig, QuadrantChartConfig } from '../../config.type.js';
+import type { Point } from '../../types.js';
 export type TextVerticalPos = 'left' | 'center' | 'right';
 export type TextHorizontalPos = 'top' | 'middle' | 'bottom';
-export interface Point {
-    x: number;
-    y: number;
-}
 export interface QuadrantPointInputType extends Point {
     text: string;
 }
@@ -42,7 +39,7 @@ export interface QuadrantBuildType {
     title?: QuadrantTextType;
     borderLines?: QuadrantLineType[];
 }
-export interface quadrantBuilderData {
+export interface QuadrantBuilderData {
     titleText: string;
     quadrant1Text: string;
     quadrant2Text: string;
@@ -54,7 +51,7 @@ export interface quadrantBuilderData {
     yAxisTopText: string;
     points: QuadrantPointInputType[];
 }
-export interface QuadrantBuilderConfig extends QuadrantChartConfig {
+export interface QuadrantBuilderConfig extends Required<Omit<QuadrantChartConfig, keyof BaseDiagramConfig>> {
     showXAxis: boolean;
     showYAxis: boolean;
     showTitle: boolean;
@@ -102,11 +99,11 @@ export declare class QuadrantBuilder {
     private themeConfig;
     private data;
     constructor();
-    getDefaultData(): quadrantBuilderData;
+    getDefaultData(): QuadrantBuilderData;
     getDefaultConfig(): QuadrantBuilderConfig;
     getDefaultThemeConfig(): QuadrantBuilderThemeConfig;
     clear(): void;
-    setData(data: Partial<quadrantBuilderData>): void;
+    setData(data: Partial<QuadrantBuilderData>): void;
     addPoints(points: QuadrantPointInputType[]): void;
     setConfig(config: Partial<QuadrantBuilderConfig>): void;
     setThemeConfig(themeConfig: Partial<QuadrantBuilderThemeConfig>): void;

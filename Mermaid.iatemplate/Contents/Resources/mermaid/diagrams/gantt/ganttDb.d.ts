@@ -1,4 +1,3 @@
-export function parseDirective(statement: any, context: any, type: any): void;
 export function clear(): void;
 export function setAxisFormat(txt: any): void;
 export function getAxisFormat(): string;
@@ -23,6 +22,8 @@ export function addSection(txt: any): void;
 export function getSections(): any[];
 export function getTasks(): any[];
 export function isInvalidDate(date: any, dateFormat: any, excludes: any, includes: any): any;
+export function setWeekday(txt: any): void;
+export function getWeekday(): string;
 export function addTask(descr: any, data: any): void;
 export function findTaskById(id: any): any;
 export function addTaskOrg(descr: any, data: any): void;
@@ -31,7 +32,6 @@ export function setClass(ids: any, className: any): void;
 export function setClickEvent(ids: any, functionName: any, functionArgs: any): void;
 export function bindFunctions(element: any): void;
 declare namespace _default {
-    export { parseDirective };
     export function getConfig(): import("../../config.type.js").GanttDiagramConfig | undefined;
     export { clear };
     export { setDateFormat };
@@ -70,14 +70,16 @@ declare namespace _default {
     export { bindFunctions };
     export { parseDuration };
     export { isInvalidDate };
+    export { setWeekday };
+    export { getWeekday };
 }
 export default _default;
-import { setAccTitle } from '../../commonDb.js';
-import { getAccTitle } from '../../commonDb.js';
-import { setDiagramTitle } from '../../commonDb.js';
-import { getDiagramTitle } from '../../commonDb.js';
-import { setAccDescription } from '../../commonDb.js';
-import { getAccDescription } from '../../commonDb.js';
+import { setAccTitle } from '../common/commonDb.js';
+import { getAccTitle } from '../common/commonDb.js';
+import { setDiagramTitle } from '../common/commonDb.js';
+import { getDiagramTitle } from '../common/commonDb.js';
+import { setAccDescription } from '../common/commonDb.js';
+import { getAccDescription } from '../common/commonDb.js';
 /**
  * Parse a string into the args for `dayjs.add()`.
  *

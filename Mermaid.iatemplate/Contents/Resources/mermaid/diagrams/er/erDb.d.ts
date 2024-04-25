@@ -1,8 +1,6 @@
-export function parseDirective(statement: any, context: any, type: any): void;
 declare namespace _default {
     export { Cardinality };
     export { Identification };
-    export { parseDirective };
     export function getConfig(): import("../../config.type.js").ErDiagramConfig | undefined;
     export { addEntity };
     export { addAttributes };
@@ -19,17 +17,17 @@ declare namespace _default {
 }
 export default _default;
 declare namespace Cardinality {
-    const ZERO_OR_ONE: string;
-    const ZERO_OR_MORE: string;
-    const ONE_OR_MORE: string;
-    const ONLY_ONE: string;
-    const MD_PARENT: string;
+    let ZERO_OR_ONE: string;
+    let ZERO_OR_MORE: string;
+    let ONE_OR_MORE: string;
+    let ONLY_ONE: string;
+    let MD_PARENT: string;
 }
 declare namespace Identification {
-    const NON_IDENTIFYING: string;
-    const IDENTIFYING: string;
+    let NON_IDENTIFYING: string;
+    let IDENTIFYING: string;
 }
-declare function addEntity(name: any): any;
+declare function addEntity(name: any, alias?: undefined): any;
 declare function addAttributes(entityName: any, attribs: any): void;
 declare function getEntities(): {};
 /**
@@ -43,9 +41,9 @@ declare function getEntities(): {};
 declare function addRelationship(entA: any, rolA: any, entB: any, rSpec: any): void;
 declare function getRelationships(): any[];
 declare function clear(): void;
-import { setAccTitle } from '../../commonDb.js';
-import { getAccTitle } from '../../commonDb.js';
-import { setAccDescription } from '../../commonDb.js';
-import { getAccDescription } from '../../commonDb.js';
-import { setDiagramTitle } from '../../commonDb.js';
-import { getDiagramTitle } from '../../commonDb.js';
+import { setAccTitle } from '../common/commonDb.js';
+import { getAccTitle } from '../common/commonDb.js';
+import { setAccDescription } from '../common/commonDb.js';
+import { getAccDescription } from '../common/commonDb.js';
+import { setDiagramTitle } from '../common/commonDb.js';
+import { getDiagramTitle } from '../common/commonDb.js';

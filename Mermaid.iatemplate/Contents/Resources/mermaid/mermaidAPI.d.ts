@@ -1,10 +1,6 @@
 import { Diagram } from './Diagram.js';
-import { MermaidConfig } from './config.type.js';
-interface DiagramStyleClassDef {
-    id: string;
-    styles?: string[];
-    textStyles?: string[];
-}
+import type { MermaidConfig } from './config.type.js';
+import type { DiagramMetadata, DiagramStyleClassDef } from './diagram-api/types.js';
 export interface ParseOptions {
     suppressErrors?: boolean;
 }
@@ -34,17 +30,6 @@ export interface RenderResult {
  */
 declare function parse(text: string, parseOptions?: ParseOptions): Promise<boolean>;
 /**
- * @param  text - text to be encoded
- * @returns
- */
-export declare const encodeEntities: (text: string) => string;
-/**
- *
- * @param  text - text to be decoded
- * @returns
- */
-export declare const decodeEntities: (text: string) => string;
-/**
  * Create a CSS style that starts with the given class name, then the element,
  * with an enclosing block that has each of the cssClasses followed by !important;
  * @param cssClass - CSS class name
@@ -55,14 +40,13 @@ export declare const decodeEntities: (text: string) => string;
 export declare const cssImportantStyles: (cssClass: string, element: string, cssClasses?: string[]) => string;
 /**
  * Create the user styles
- *
+ * @internal
  * @param  config - configuration that has style and theme settings to use
- * @param graphType - used for checking if classDefs should be applied
  * @param  classDefs - the classDefs in the diagram text. Might be null if none were defined. Usually is the result of a call to getClasses(...)
  * @returns  the string with all the user styles
  */
-export declare const createCssStyles: (config: MermaidConfig, graphType: string, classDefs?: Record<string, DiagramStyleClassDef> | null | undefined) => string;
-export declare const createUserStyles: (config: MermaidConfig, graphType: string, classDefs: Record<string, DiagramStyleClassDef>, svgId: string) => string;
+export declare const createCssStyles: (config: MermaidConfig, classDefs?: Record<string, DiagramStyleClassDef> | null | undefined) => string;
+export declare const createUserStyles: (config: MermaidConfig, graphType: string, classDefs: Record<string, DiagramStyleClassDef> | undefined, svgId: string) => string;
 /**
  * Clean up svgCode. Do replacements needed
  *
@@ -173,8 +157,7 @@ declare function initialize(options?: MermaidConfig): void;
 export declare const mermaidAPI: Readonly<{
     render: (id: string, text: string, svgContainingElement?: Element) => Promise<RenderResult>;
     parse: typeof parse;
-    parseDirective: (p: any, statement: string, context: string, type: string) => void;
-    getDiagramFromText: (text: string) => Promise<Diagram>;
+    getDiagramFromText: (text: string, metadata?: Pick<DiagramMetadata, 'title'>) => Promise<Diagram>;
     initialize: typeof initialize;
     getConfig: () => MermaidConfig;
     setConfig: (conf: MermaidConfig) => MermaidConfig;

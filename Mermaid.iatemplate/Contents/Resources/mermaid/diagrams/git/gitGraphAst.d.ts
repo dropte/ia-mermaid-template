@@ -1,11 +1,10 @@
-export function parseDirective(statement: any, context: any, type: any): void;
 export function setDirection(dir: any): void;
 export function setOptions(rawOptString: any): void;
 export function getOptions(): {};
 export function commit(msg: any, id: any, type: any, tag: any): void;
 export function branch(name: any, order: any): void;
 export function merge(otherBranch: any, custom_id: any, override_type: any, custom_tag: any): void;
-export function cherryPick(sourceId: any, targetId: any, tag: any): void;
+export function cherryPick(sourceId: any, targetId: any, tag: any, parentCommitId: any): void;
 export function checkout(branch: any): void;
 export function prettyPrint(): void;
 export function clear(): void;
@@ -19,14 +18,13 @@ export function getCurrentBranch(): string | undefined;
 export function getDirection(): string;
 export function getHead(): any;
 export namespace commitType {
-    const NORMAL: number;
-    const REVERSE: number;
-    const HIGHLIGHT: number;
-    const MERGE: number;
-    const CHERRY_PICK: number;
+    let NORMAL: number;
+    let REVERSE: number;
+    let HIGHLIGHT: number;
+    let MERGE: number;
+    let CHERRY_PICK: number;
 }
 declare namespace _default {
-    export { parseDirective };
     export function getConfig(): import("../../config.type.js").GitGraphDiagramConfig | undefined;
     export { setDirection };
     export { setOptions };
@@ -55,9 +53,9 @@ declare namespace _default {
 }
 export default _default;
 declare let branches: typeof branches;
-import { setAccTitle } from '../../commonDb.js';
-import { getAccTitle } from '../../commonDb.js';
-import { getAccDescription } from '../../commonDb.js';
-import { setAccDescription } from '../../commonDb.js';
-import { setDiagramTitle } from '../../commonDb.js';
-import { getDiagramTitle } from '../../commonDb.js';
+import { setAccTitle } from '../common/commonDb.js';
+import { getAccTitle } from '../common/commonDb.js';
+import { getAccDescription } from '../common/commonDb.js';
+import { setAccDescription } from '../common/commonDb.js';
+import { setDiagramTitle } from '../common/commonDb.js';
+import { getDiagramTitle } from '../common/commonDb.js';

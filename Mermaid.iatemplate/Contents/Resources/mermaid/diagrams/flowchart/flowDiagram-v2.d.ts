@@ -1,8 +1,7 @@
-import { MermaidConfig } from '../../config.type.js';
+import type { MermaidConfig } from '../../config.type.js';
 export declare const diagram: {
     parser: any;
     db: {
-        parseDirective: (statement: any, context: any, type: any) => void;
         defaultConfig: () => import("../../config.type.js").FlowchartDiagramConfig | undefined;
         setAccTitle: (txt: string) => void;
         getAccTitle: () => string;
@@ -13,7 +12,7 @@ export declare const diagram: {
         addLink: (_start: any, _end: any, type: any) => void;
         updateLinkInterpolate: (positions: any, interp: any) => void;
         updateLink: (positions: any, style: any) => void;
-        addClass: (id: any, style: any) => void;
+        addClass: (ids: any, style: any) => void;
         setDirection: (dir: any) => void;
         setClass: (ids: any, className: any) => void;
         setTooltip: (ids: any, tooltip: any) => void;
@@ -48,9 +47,9 @@ export declare const diagram: {
     };
     renderer: {
         setConf: (cnf: any) => void;
-        addVertices: (vert: any, g: any, svgId: any, root: any, doc: any, diagObj: any) => void;
-        addEdges: (edges: object, g: object, diagObj: any) => void;
-        getClasses: (text: any, diagObj: any) => object;
+        addVertices: (vert: any, g: any, svgId: any, root: any, doc: any, diagObj: any) => Promise<void>;
+        addEdges: (edges: object, g: object, diagObj: any) => Promise<void>;
+        getClasses: (text: any, diagObj: any) => Record<string, import("../../diagram-api/types.js").DiagramStyleClassDef>;
         draw: (text: any, id: any, _version: any, diagObj: any) => Promise<void>;
     };
     styles: (options: import("./styles.js").FlowChartStyleOptions) => string;
